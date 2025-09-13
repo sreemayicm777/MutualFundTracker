@@ -80,8 +80,6 @@ Full API documentation is available here: docs/api.md
 Example: Signup
 POST /api/auth/signup
 
-json
-Copy code
 {
   "name": "John Doe",
   "email": "john@example.com",
@@ -89,8 +87,6 @@ Copy code
 }
 Response:
 
-json
-Copy code
 {
   "success": true,
   "message": "User registered successfully",
@@ -135,7 +131,8 @@ Example error response:
 }
 🧪 Testing with Postman
 Import the Postman collection:
-MutualFundTracker.postman_collection.json
+ https://github.com/sreemayicm777/MutualFundTracker/blob/master/assest/MutualFundTracker.postman_collection%20(1)%20(1).json 
+
 
 Login and copy the JWT token.
 
