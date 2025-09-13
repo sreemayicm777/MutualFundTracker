@@ -2,7 +2,7 @@ import cron from "node-cron";
 import Portfolio from "../models/Portfolio.js";
 import FundLatestNav from "../models/FundLatestNav.js";
 import FundNavHistory from "../models/FundNavHistory.js";
-import { fetchCurrentNav } from "../services/fundService.js"; // Fixed path
+import { fetchCurrentNav } from "../services/fundService.js";
 
 // Update Latest NAV in DB
 const updateLatestNAV = async (schemeCode, navData) => {
@@ -116,5 +116,3 @@ export const scheduleDailyNAVUpdate = () => {
   return job;
 };
 
-// Start the scheduled job when this module is imported
-scheduleDailyNAVUpdate();
