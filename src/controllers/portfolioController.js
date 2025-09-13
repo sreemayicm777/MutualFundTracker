@@ -184,9 +184,8 @@ export const getPortfolioHistory = async (req, res) => {
     const { startDate, endDate } = req.query;
     const portfolios = await Portfolio.find({ userId: req.user._id });
     // console.log("portfolio = ", portfolios);
-    
+
     if (portfolios.length === 0) {
-        
       return res.json({ success: true, data: [] });
     }
     const schemeMap = {};
@@ -194,21 +193,18 @@ export const getPortfolioHistory = async (req, res) => {
       schemeMap[p.schemeCode] = p.units;
     });
 
-    const schemeCodes = portfolios.map((p) => 
-      p.schemeCode
-    );
-    console.log("schemeCode",schemeCodes);
-    
+    const schemeCodes = portfolios.map((p) => p.schemeCode);
+    console.log("schemeCode", schemeCodes);
+
     const history = await FundNavHistory.find({
-        
       schemeCode: { $in: schemeCodes },
-      
+
       ...(startDate && endDate
         ? { date: { $gte: startDate, $lte: endDate } }
         : {}),
     });
-    console.log("his",history);
-    
+    console.log("his", history);
+
     const grouped = {};
     for (const nav of history) {
       if (!grouped[nav.date]) grouped[nav.date] = 0;
@@ -217,25 +213,22 @@ export const getPortfolioHistory = async (req, res) => {
     }
 
     const data = Object.entries(grouped).map(([date, totalValue]) => ({
-      
       date,
       totalValue,
-      
     }));
-    res.json({success:true, data})
+    res.json({ success: true, data });
   } catch (error) {
     console.error("PortfolioValueError", error);
     res.status(500).json({ success: false, message: "Server Error" });
   }
 };
 
-
 export const removePortfolioFund = async (req, res) => {
   try {
     const { schemeCode } = req.params;
 
     const result = await Portfolio.findOneAndDelete({
-      userId:req.user._id,
+      userId: req.user._id,
       schemeCode: schemeCode,
     });
 

@@ -1,6 +1,8 @@
 import Fund from "../models/Fund.js";
 import { fetchAllFunds, fetchHistoryNav } from "../services/fundService.js";
 
+
+
 export const getFunds = async (req, res) => {
   try {
     const { search = "", page = 1, limit = 20 } = req.query;
@@ -8,8 +10,9 @@ export const getFunds = async (req, res) => {
       ? { schemeName: { $regex: search, $options: "i" } }
       : {};
 
-    const funds= await Fund.find(query)
-    .skip ( (page - 1) * limit).limit(parseInt(limit));
+    const funds = await Fund.find(query)
+      .skip((page - 1) * limit)
+      .limit(parseInt(limit));
 
     const totalFunds = await Fund.countDocuments(query);
 
@@ -23,7 +26,7 @@ export const getFunds = async (req, res) => {
           currentPage: page,
           totalPages,
           totalFunds,
-          hasNext: page * limit< totalFunds,
+          hasNext: page * limit < totalFunds,
           hasPrev: page > 1,
         },
       },
@@ -67,8 +70,8 @@ export const getFundNavHistory = async (req, res) => {
         .status(404)
         .json({ success: false, message: "Fund Not Found" });
     }
-const navData = await fetchHistoryNav( schemeCode )
-console.log("navApiRes",navData);
+    const navData = await fetchHistoryNav(schemeCode);
+    console.log("navApiRes", navData);
 
     res.json({
       success: true,
@@ -77,11 +80,12 @@ console.log("navApiRes",navData);
         schemeName: fund.schemeName,
         currentNav: navData.data[0].nav,
         asOn: navData.data[0].date,
-        historyNav:navData.data.slice(0,30),
-
+        historyNav: navData.data.slice(0, 30),
       },
     });
   } catch (error) {
-    res.status(500).json({ success: false, message: "Failed to fetch nav history" });
+    res
+      .status(500)
+      .json({ success: false, message: "Failed to fetch nav history" });
   }
 };

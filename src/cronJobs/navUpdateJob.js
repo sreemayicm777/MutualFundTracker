@@ -47,7 +47,7 @@ const addNAVHistory = async (schemeCode, navData) => {
   }
 };
 
-// Fetch Latest NAV from API with error handling
+// Fetch Latest NAV from API
 const fetchLatestNAV = async (schemeCode) => {
   try {
     const response = await fetchCurrentNav(schemeCode);
