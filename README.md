@@ -4,19 +4,19 @@ A backend service to track mutual fund investments, calculate portfolio value, a
 
 ---
 
-## ✨ Features
-- 🔐 User authentication (JWT + bcrypt)
-- ➕ Add/remove funds to portfolio
-- 📈 Calculate current portfolio value
-- 💹 Profit/Loss tracking with percentage
-- 📜 Historical performance view
-- 🔄 Fund master data sync from [mfapi.in](https://www.mfapi.in/)
-- 🛡️ Security best practices: input validation & rate limiting
-- ⏲️ Automated NAV sync via cron jobs
+##  Features
+-  User authentication (JWT + bcrypt)
+-  Add/remove funds to portfolio
+-  Calculate current portfolio value
+-  Profit/Loss tracking with percentage
+-  Historical performance view
+-  Fund master data sync from [mfapi.in](https://www.mfapi.in/)
+-  Security best practices: input validation & rate limiting
+-  Automated NAV sync via cron jobs
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 - **Backend:** Node.js + Express
 - **Database:** MongoDB (Mongoose ODM)
 - **Auth:** JWT + bcrypt
@@ -37,16 +37,12 @@ src/
 ├── app.js
 └── server.js
 
-yaml
-Copy code
 
----
-
-## ⚙️ Setup & Installation
+ ⚙️ Setup & Installation
 
 1. **Clone repository**
 ```bash
-git clone https://github.com/your-username/mutual-fund-tracker.git
+git clone 
 cd mutual-fund-tracker
 Install dependencies
 
