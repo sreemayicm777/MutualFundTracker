@@ -4,19 +4,19 @@ A backend service to track mutual fund investments, calculate portfolio value, a
 
 ---
 
-## ✨ Features
-- 🔐 User authentication (JWT + bcrypt)
-- ➕ Add/remove funds to portfolio
-- 📈 Calculate current portfolio value
-- 💹 Profit/Loss tracking with percentage
-- 📜 Historical performance view
-- 🔄 Fund master data sync from [mfapi.in](https://www.mfapi.in/)
-- 🛡️ Security best practices: input validation & rate limiting
-- ⏲️ Automated NAV sync via cron jobs
+##  Features
+-  User authentication (JWT + bcrypt)
+-  Add/remove funds to portfolio
+-  Calculate current portfolio value
+-  Profit/Loss tracking with percentage
+-  Historical performance view
+-  Fund master data sync from [mfapi.in](https://www.mfapi.in/)
+-  Security best practices: input validation & rate limiting
+-  Automated NAV sync via cron jobs
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 - **Backend:** Node.js + Express
 - **Database:** MongoDB (Mongoose ODM)
 - **Auth:** JWT + bcrypt
@@ -37,39 +37,28 @@ src/
 ├── app.js
 └── server.js
 
-yaml
-Copy code
 
----
-
-## ⚙️ Setup & Installation
+ ⚙️ Setup & Installation
 
 1. **Clone repository**
 ```bash
-git clone https://github.com/your-username/mutual-fund-tracker.git
-cd mutual-fund-tracker
-Install dependencies
+git clone https://github.com/sreemayicm777/MutualFundTracker.git
+cd MutualFundTracker
 
-bash
-Copy code
+2.Install dependencies
 npm install
-Environment variables
+
+3.Environment variables
 Create a .env file in project root:
 
-ini
-Copy code
 PORT=5000
 MONGO_URI=mongodb+srv://yourUser:yourPassword@cluster.mongodb.net/mutualFundDB
 JWT_SECRET=yourSecret
-Run in dev mode
 
-bash
-Copy code
+4.Run in dev mode
 npm run dev
-Run in production
 
-bash
-Copy code
+5.Run in production
 npm start
 
 ⏲️ Cron Jobs – NAV Update Flow
@@ -116,7 +105,7 @@ Example: Add Fund to Portfolio
 POST /api/portfolio/add
 
 json
-Copy code
+
 {
   "schemeCode": 152075,
   "units": 100.5
@@ -124,7 +113,7 @@ Copy code
 Response:
 
 json
-Copy code
+
 {
   "success": true,
   "message": "Fund added successfully",
@@ -137,8 +126,7 @@ Copy code
 🚨 Error Handling
 Example error response:
 
-json
-Copy code
+
 {
   "success": false,
   "errors": [
@@ -157,8 +145,7 @@ Test portfolio, funds, and history APIs.
 
 🗄️ Database Schemas
 Users
-json
-Copy code
+
 {
   "_id": "ObjectId",
   "email": "string",
@@ -168,8 +155,7 @@ Copy code
   "createdAt": "Date"
 }
 Portfolio
-json
-Copy code
+
 {
   "_id": "ObjectId",
   "userId": "ObjectId",
@@ -179,8 +165,7 @@ Copy code
   "createdAt": "Date"
 }
 Fund
-json
-Copy code
+
 {
   "schemeCode": "number",
   "schemeName": "string",
@@ -189,16 +174,14 @@ Copy code
   "schemeCategory": "string"
 }
 FundLatestNav
-json
-Copy code
+
 {
   "schemeCode": "number",
   "nav": "number",
   "date": "string (DD-MM-YYYY)"
 }
 FundNavHistory
-json
-Copy code
+
 {
   "schemeCode": "number",
   "nav": "number",
